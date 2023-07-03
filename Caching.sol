@@ -8,15 +8,15 @@ pragma solidity ^0.8.0;
 contract GasSaveCaching {
     uint public num = 50;
 
-    // for num = 50 , it takes 47605 gas
-    function noCache() public view returns(uint256 op) {
+    // takes 47605 gas
+    function noCached() public view returns(uint256 op) {
         for (uint i = 0; i < num; i++) {
             op += 1;
         }
     }
 
-    // for num = 50 , it takes 42588 gas
-    function cache() public view returns(uint256 op) {
+    // takes 42588 gas
+    function cached() public view returns(uint256 op) {
         uint _num = num;
         for (uint i = 0; i < _num; i++) {
             op += 1;
